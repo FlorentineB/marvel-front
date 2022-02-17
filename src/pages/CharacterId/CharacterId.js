@@ -5,13 +5,12 @@ import { BACKEND_URL } from "../../static/constantes";
 import CharacterCard from "./CharacterCard";
 import "./CharacterId.css";
 
-const CharacterId = () => {
+const CharacterId = ({ setUpdateFavorites, favorites }) => {
   const [character, setCharacter] = useState({});
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const { _id } = useParams();
-  console.log("params", _id);
 
   useEffect(() => {
     if (character !== {} && comics !== {}) {
@@ -48,6 +47,10 @@ const CharacterId = () => {
           thumbnail={thumbnail}
           name={name}
           description={description}
+          url={"character"}
+          _id={_id}
+          setUpdateFavorites={setUpdateFavorites}
+          favorites={favorites}
         />
       </div>
       <div className="comics-display">

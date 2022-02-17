@@ -6,7 +6,7 @@ import "./Characters.css";
 import CharacterCard from "../CharacterId/CharacterCard";
 import Loading from "../../components/Loading";
 
-const Characters = ({ searchCharacters }) => {
+const Characters = ({ searchCharacters, setUpdateFavorites, favorites }) => {
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,6 +43,10 @@ const Characters = ({ searchCharacters }) => {
               thumbnail={thumbnail}
               name={name}
               description={description}
+              url={"character"}
+              _id={_id}
+              setUpdateFavorites={setUpdateFavorites}
+              favorites={favorites}
             />
           </Link>
         );

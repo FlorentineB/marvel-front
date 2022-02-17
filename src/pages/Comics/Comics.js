@@ -5,7 +5,7 @@ import "./Comics.css";
 import CharacterCard from "../CharacterId/CharacterCard";
 import Loading from "../../components/Loading";
 
-const Comics = ({ searchComics }) => {
+const Comics = ({ searchComics, setUpdateFavorites, favorites }) => {
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -21,8 +21,6 @@ const Comics = ({ searchComics }) => {
     fetchData();
   }, [searchComics]);
 
-  console.log(comics);
-
   if (isLoading) {
     return <Loading />;
   }
@@ -35,11 +33,15 @@ const Comics = ({ searchComics }) => {
     <div className="presentation">
       {comics.map(({ thumbnail, _id, title, description }, index) => {
         return (
-          <div className="comics-card">
+          <div key={`comics_${_id}`} className="comics-card">
             <CharacterCard
               thumbnail={thumbnail}
               name={title}
               description={description}
+              url={"comic"}
+              _id={_id}
+              setUpdateFavorites={setUpdateFavorites}
+              favorites={favorites}
             />
           </div>
         );

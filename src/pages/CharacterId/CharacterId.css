@@ -1,0 +1,52 @@
+.character-presentation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 30px;
+  align-items: flex-start;
+}
+
+.comics-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.character-card-id {
+  position: sticky;
+  top: 0;
+}
+
+.comic-presentation {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 100px;
+  margin: 10px;
+}
+
+.comic-presentation > * {
+  transition: all 0.3s;
+}
+.comic-picture {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  transform: translateY(0px);
+  width: 100px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.comic-presentation:hover > .comic-picture {
+  transform: translateY(-10px);
+}
+
+.comic-text {
+  margin-top: 20px;
+}
+
+.comic-presentation:hover > .comic-text {
+  color: red;
+}

@@ -1,1 +1,115 @@
 /* Other rules */
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("./static/Roboto_Condensed/RobotoCondensedRegular.ttf");
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+button:hover,
+button:focus {
+  outline: red;
+}
+
+body {
+  font-family: "Roboto Condensed";
+}
+
+.presentation {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.loading {
+  width: 100%;
+}
+
+/* /////////////// */
+/* Character class */
+/* /////////////// */
+.character-card-wrapper {
+  max-width: 250px;
+  height: 100%;
+  position: relative;
+  background: rgb(32, 32, 32);
+  clip-path: polygon(100% 0, 100% 95%, 93% 100%, 0 100%, 0 0);
+}
+
+.character-card-background {
+  width: 100%;
+  height: 215px;
+  transition: all 0.3s;
+  background: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.character-card-wrapper:hover > .character-card-background {
+  height: 100%;
+}
+
+.character-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.character-card:hover {
+  background-position: bottom;
+}
+
+.character-img-wrapper {
+  height: 210px;
+  width: 250px;
+  position: relative;
+  overflow: hidden;
+}
+
+.character-img {
+  object-fit: cover;
+  transform: scaleX(1);
+  transition: all 0.3s;
+  overflow: hidden;
+  object-position: top center;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: block;
+}
+
+.character-card-wrapper:hover
+  > .character-card
+  > .character-img-wrapper
+  > .character-img {
+  transform: scale(1.2);
+}
+
+.character-name {
+  color: white;
+  padding: 0 5px;
+}
+
+.character-description {
+  color: white;
+  padding: 0 5px;
+  font-size: 12px;
+}
+
+.character-link {
+  cursor: pointer;
+}
+.character-link,
+.comics-card {
+  margin: 5px;
+}

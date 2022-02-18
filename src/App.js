@@ -91,7 +91,12 @@ function App() {
         />
         <Route
           path="/favourites"
-          element={<Favourites favorites={favorites} />}
+          element={
+            <Favourites
+              favorites={favorites}
+              setUpdateFavorites={setUpdateFavorites}
+            />
+          }
         />
         <Route
           path="/join"

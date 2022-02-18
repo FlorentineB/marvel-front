@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { BACKEND_URL } from "../../static/constantes";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./Characters.css";
 import CharacterCard from "../CharacterId/CharacterCard";
 import Loading from "../../components/Loading";
 

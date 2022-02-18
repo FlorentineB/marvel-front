@@ -13,13 +13,6 @@ const CharacterCard = ({
   favorites,
 }) => {
   const token = Cookies.get("token") || null;
-  const fav = favorites ? favorites[url] : [];
-
-  const isFavorites = !fav.reduce(
-    (previousValue, currentValue) =>
-      previousValue && _id !== currentValue.apiid,
-    true
-  );
 
   const handleClick = (operation) => () => {
     async function createFavorite() {
@@ -54,6 +47,31 @@ const CharacterCard = ({
     }
   };
 
+  const favoriteHeart = () => {
+    const fav = favorites ? favorites[url] : [];
+
+    const isFavorites = !fav.reduce(
+      (previousValue, currentValue) =>
+        previousValue && _id !== currentValue.apiid,
+      true
+    );
+    return (
+      <>
+        {isFavorites ? (
+          <AiFillHeart
+            onClick={() => handleClick("delete")()}
+            className="character-img-favourite"
+          />
+        ) : (
+          <AiOutlineHeart
+            onClick={() => handleClick("create")()}
+            className="character-img-favourite"
+          />
+        )}
+      </>
+    );
+  };
+
   return (
     <div className="character-card-wrapper">
       <div className="character-card-background"></div>
@@ -65,17 +83,7 @@ const CharacterCard = ({
             src={`${thumbnail?.path || ""}.${thumbnail?.extension || ""}`}
             alt="character_picture"
           />
-          {isFavorites ? (
-            <AiFillHeart
-              onClick={() => handleClick("delete")()}
-              className="character-img-favourite"
-            />
-          ) : (
-            <AiOutlineHeart
-              onClick={() => handleClick("create")()}
-              className="character-img-favourite"
-            />
-          )}
+          {token && favoriteHeart()}
         </div>
         <h2 className="character-name">{name}</h2>
         <p className="character-description">{description}</p>

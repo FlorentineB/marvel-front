@@ -1,0 +1,19 @@
+/* FAVOURITES */
+.favourites-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  background-color: white;
+}
+
+/* FAVOURITECOLUMN */
+.favourite-title {
+  color: white;
+}
+
+.favourite-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

@@ -8,9 +8,8 @@ const FavouriteColumn = ({ title, favorites, setUpdateFavorites, url }) => {
 
       {favorites[url].map(({ thumbnail, apiid, name, description }, index) => {
         return (
-          <div className="favorites-card">
+          <div key={url} className="favorites-card">
             <CharacterCard
-              key={url}
               thumbnail={thumbnail}
               name={name}
               description={description}

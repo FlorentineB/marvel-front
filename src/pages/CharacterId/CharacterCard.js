@@ -14,20 +14,20 @@ const CharacterCard = ({
 }) => {
   const token = Cookies.get("token") || null;
 
-  const handleClick = (operation) => () => {
+  const handleClick = (operation) => (e) => {
+    e.preventDefault();
     async function createFavorite() {
       const response = await axios.post(
         `${BACKEND_URL}/favourite/${url}`,
         { _id, name, description, thumbnail },
         { headers: { authorization: "Bearer " + token } }
       );
-
-      console.log(response.status);
-      setUpdateFavorites(true);
+      if (response.status === 200) {
+        setUpdateFavorites(true);
+      }
     }
 
     async function deleteFavorite() {
-      console.log("ere");
       const response = await axios.delete(
         `${BACKEND_URL}/favourite/${url}/delete`,
         {
@@ -35,8 +35,9 @@ const CharacterCard = ({
           data: { apiid: _id },
         }
       );
-      console.log(response.status);
-      setUpdateFavorites(true);
+      if (response.status === 200) {
+        setUpdateFavorites(true);
+      }
     }
 
     if (operation === "create") {
@@ -49,7 +50,6 @@ const CharacterCard = ({
 
   const favoriteHeart = () => {
     const fav = favorites ? favorites[url] : [];
-
     const isFavorites = !fav.reduce(
       (previousValue, currentValue) =>
         previousValue && _id !== currentValue.apiid,
@@ -59,12 +59,12 @@ const CharacterCard = ({
       <>
         {isFavorites ? (
           <AiFillHeart
-            onClick={() => handleClick("delete")()}
+            onClick={(e) => handleClick("delete")(e)}
             className="character-img-favourite"
           />
         ) : (
           <AiOutlineHeart
-            onClick={() => handleClick("create")()}
+            onClick={(e) => handleClick("create")(e)}
             className="character-img-favourite"
           />
         )}

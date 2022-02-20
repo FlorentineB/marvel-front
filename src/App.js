@@ -36,8 +36,10 @@ function App() {
           comic: responseComics.data,
         });
       }
+      if (token) {
+        fetchFavorites();
+      }
 
-      fetchFavorites();
       setUpdateFavorites(false);
     }
   }, [updateFavorites, token]);
@@ -45,10 +47,13 @@ function App() {
   const handleConnect = (token) => {
     if (token) {
       Cookies.set("token", token, { expires: 1 });
+      setToken(token);
+      setUpdateFavorites(true);
     } else {
       Cookies.remove("token");
+      setToken(token);
+      setUpdateFavorites(true);
     }
-    setToken(token);
   };
 
   return (

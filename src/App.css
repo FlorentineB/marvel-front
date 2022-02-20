@@ -129,6 +129,7 @@ body {
   cursor: pointer;
 }
 .character-link,
-.comics-card {
+.comics-card,
+.favorites-card {
   margin: 5px;
 }

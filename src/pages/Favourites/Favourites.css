@@ -9,7 +9,8 @@
 
 /* FAVOURITECOLUMN */
 .favourite-title {
-  color: white;
+  color: black;
+  text-align: center;
 }
 
 .favourite-column {
